@@ -2,877 +2,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101b3f">
-  <meta name="description" content="Learn English with Ayuup through online WhatsApp lessons or in-person lessons in Jigjiga.">
-  <title>English with Ayuup | Learn with Confidence</title>
-
-  <style>
-    :root {
-      --navy: #101b3f;
-      --blue: #315cf5;
-      --light-blue: #eaf0ff;
-      --white: #ffffff;
-      --text: #18213b;
-      --muted: #69738b;
-      --border: #e6eaf2;
-      --green: #16885b;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: #f5f7fc;
-      line-height: 1.7;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .topbar {
-      background: var(--navy);
-      color: white;
-      padding: 17px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .brand-icon {
-      display: grid;
-      place-items: center;
-      width: 43px;
-      height: 43px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #7595ff, #315cf5);
-      font-size: 23px;
-    }
-
-    .brand small {
-      display: block;
-      color: #bdcaff;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-    }
-
-    .top-contact {
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      border: 1px solid #53618a;
-      padding: 9px 14px;
-      border-radius: 30px;
-    }
-
-    .top-contact:hover {
-      background: #26345f;
-    }
-
-    .progress-area {
-      background: white;
-      padding: 16px 6%;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .progress-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-
-    .progress-track {
-      height: 6px;
-      background: #e9edf7;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 16.666%;
-      background: linear-gradient(90deg, #315cf5, #6c8aff);
-      border-radius: 20px;
-      transition: width 0.3s ease;
-    }
-
-    main {
-      width: min(100% - 32px, 1000px);
-      margin: 36px auto;
-    }
-
-    .page {
-      display: none;
-      animation: appear 0.3s ease;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #101b3f, #253e83 65%, #315cf5);
-      color: white;
-      border-radius: 28px;
-      padding: clamp(30px, 6vw, 66px);
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 18px 45px rgba(16, 27, 63, 0.13);
-    }
-
-    .hero::after {
-      content: "A";
-      position: absolute;
-      right: -10px;
-      bottom: -115px;
-      font-size: 350px;
-      line-height: 1;
-      font-weight: 900;
-      color: rgba(255,255,255,0.045);
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: rgba(255,255,255,0.12);
-      color: #dce5ff;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 30px;
-      padding: 7px 13px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.12;
-      letter-spacing: -2px;
-      max-width: 650px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      color: #dce4ff;
-      max-width: 580px;
-      font-size: 16px;
-      margin-bottom: 27px;
-    }
-
-    .hero .button {
-      position: relative;
-      z-index: 1;
-    }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      border: none;
-      border-radius: 12px;
-      padding: 13px 19px;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .primary {
-      color: white;
-      background: var(--blue);
-      box-shadow: 0 7px 18px rgba(49,92,245,0.2);
-    }
-
-    .hero .primary {
-      background: white;
-      color: var(--navy);
-      box-shadow: none;
-    }
-
-    .secondary {
-      background: var(--light-blue);
-      color: var(--blue);
-    }
-
-    .whatsapp {
-      color: white;
-      background: var(--green);
-    }
-
-    .section-heading {
-      margin-bottom: 25px;
-    }
-
-    .section-heading .eyebrow {
-      color: var(--blue);
-      background: var(--light-blue);
-      border: none;
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      color: var(--navy);
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.2;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .section-heading p,
-    .muted {
-      color: var(--muted);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 8px 25px rgba(20,35,75,0.035);
-    }
-
-    .card.featured {
-      border: 2px solid #b9c8ff;
-      box-shadow: 0 12px 30px rgba(49,92,245,0.08);
-    }
-
-    .icon {
-      display: grid;
-      place-items: center;
-      width: 53px;
-      height: 53px;
-      border-radius: 16px;
-      background: var(--light-blue);
-      font-size: 25px;
-      margin-bottom: 17px;
-    }
-
-    h3 {
-      color: var(--navy);
-      font-size: 20px;
-      margin-bottom: 9px;
-    }
-
-    .price {
-      color: var(--blue);
-      font-size: 30px;
-      font-weight: 800;
-      line-height: 1.4;
-      margin: 12px 0;
-    }
-
-    .price small {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .tag {
-      display: inline-block;
-      color: var(--blue);
-      background: var(--light-blue);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      margin-bottom: 14px;
-    }
-
-    ul {
-      list-style: none;
-      margin: 18px 0;
-    }
-
-    li {
-      position: relative;
-      padding: 7px 0 7px 26px;
-      color: #46516a;
-      font-size: 14px;
-    }
-
-    li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 7px;
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    .card .button {
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    .notice {
-      margin-top: 22px;
-      padding: 18px 20px;
-      background: #eef3ff;
-      border-left: 4px solid var(--blue);
-      border-radius: 12px;
-      color: #34446e;
-      font-size: 14px;
-    }
-
-    .steps {
-      display: grid;
-      gap: 15px;
-      margin-top: 22px;
-    }
-
-    .step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      background: white;
-      border: 1px solid var(--border);
-      padding: 19px;
-      border-radius: 16px;
-    }
-
-    .step-number {
-      min-width: 39px;
-      height: 39px;
-      display: grid;
-      place-items: center;
-      background: var(--light-blue);
-      color: var(--blue);
-      border-radius: 12px;
-      font-weight: 800;
-    }
-
-    .step h3 {
-      font-size: 16px;
-      margin-bottom: 3px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .contact-panel {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: clamp(24px, 5vw, 40px);
-      text-align: center;
-    }
-
-    .contact-panel .icon {
-      margin: 0 auto 17px;
-    }
-
-    .phone {
-      font-size: clamp(22px, 4vw, 30px);
-      font-weight: 800;
-      color: var(--navy);
-      margin: 12px 0 20px;
-      overflow-wrap: anywhere;
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    .navigation button:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .page-count {
-      align-self: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    footer {
-      background: var(--navy);
-      color: #bdcaff;
-      text-align: center;
-      padding: 26px 16px;
-      font-size: 13px;
-      margin-top: 50px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    @media (max-width: 650px) {
-      .topbar {
-        padding: 13px 16px;
-      }
-
-      .brand {
-        font-size: 15px;
-      }
-
-      .top-contact {
-        padding: 8px 10px;
-        font-size: 11px;
-      }
-
-      main {
-        margin: 22px auto;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        border-radius: 21px;
-      }
-
-      h1 {
-        letter-spacing: -1px;
-      }
-
-      .card {
-        padding: 21px;
-      }
-
-      .navigation .button {
-        padding: 11px 13px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b3f">
+<meta name="description" content="Learn English with Ayuup. WhatsApp English lessons and in-person lessons in Jigjiga.">
+<title>English with Ayuup</title>
+
+<style>
+:root {
+  --navy: #101b3f;
+  --blue: #315cf5;
+  --light: #edf2ff;
+  --text: #18213b;
+  --muted: #69738b;
+  --green: #16885b;
+  --border: #e4e9f3;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fc;
+  color: var(--text);
+  line-height: 1.7;
+}
+button, a { font: inherit; }
+.topbar {
+  background: var(--navy);
+  color: white;
+  padding: 17px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+.logo {
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 14px; background: linear-gradient(135deg,#7595ff,#315cf5);
+  font-size: 24px;
+}
+.brand small { display: block; color: #bdcaff; font-size: 11px; letter-spacing: 1px; }
+.top-link {
+  color: white; border: 1px solid #56638a; padding: 8px 12px;
+  border-radius: 25px; text-decoration: none; font-size: 13px;
+}
+.progress-box { padding: 15px 6%; background: white; border-bottom: 1px solid var(--border); }
+.progress-label { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.progress-track { height: 6px; background: #e8edf7; border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; width: 16.666%; background: var(--blue); transition: width .25s; }
+main { width: min(100% - 32px, 960px); margin: 32px auto; }
+
+/* Only the current page is visible */
+.page { display: none !important; }
+.page.active { display: block !important; animation: fade .25s ease; }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero {
+  background: linear-gradient(135deg,#101b3f,#243f87 65%,#315cf5);
+  color: white; border-radius: 27px; padding: clamp(30px,6vw,65px);
+  position: relative; overflow: hidden;
+}
+.hero:after {
+  content: "A"; position: absolute; right: 0; bottom: -100px;
+  font-size: 300px; line-height: 1; font-weight: 900;
+  color: rgba(255,255,255,.05); pointer-events: none;
+}
+.eyebrow {
+  display: inline-block; background: var(--light); color: var(--blue);
+  padding: 6px 12px; border-radius: 20px; font-size: 11px;
+  font-weight: 800; letter-spacing: 1px; margin-bottom: 15px;
+}
+.hero .eyebrow { background: rgba(255,255,255,.13); color: #e3eaff; }
+h1 { font-size: clamp(37px,6vw,63px); line-height: 1.12; letter-spacing: -2px; max-width: 650px; margin-bottom: 20px; }
+h2 { font-size: clamp(29px,4vw,40px); line-height: 1.2; letter-spacing: -1px; color: var(--navy); margin-bottom: 12px; }
+h3 { color: var(--navy); font-size: 20px; margin-bottom: 8px; }
+p { margin-bottom: 12px; }
+.hero p { max-width: 580px; color: #dce5ff; margin-bottom: 25px; }
+.muted { color: var(--muted); }
+.button {
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 7px; border: 0; border-radius: 12px; padding: 13px 18px;
+  font-weight: 700; text-decoration: none; cursor: pointer;
+  transition: transform .2s;
+}
+.button:hover { transform: translateY(-2px); }
+.primary { background: var(--blue); color: white; }
+.secondary { background: var(--light); color: var(--blue); }
+.whatsapp { background: var(--green); color: white; }
+.hero .primary { background: white; color: var(--navy); position: relative; z-index: 1; }
+.heading { margin-bottom: 24px; }
+.grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.card {
+  background: white; border: 1px solid var(--border); border-radius: 20px;
+  padding: 24px; box-shadow: 0 8px 25px rgba(20,35,75,.035);
+}
+.card.featured { border: 2px solid #b9c8ff; }
+.icon {
+  display: grid; place-items: center; width: 52px; height: 52px;
+  background: var(--light); border-radius: 15px; font-size: 24px; margin-bottom: 16px;
+}
+.price { color: var(--blue); font-size: 29px; font-weight: 800; margin: 12px 0; line-height: 1.4; }
+.price small { color: var(--muted); font-size: 12px; font-weight: 500; }
+.tag { color: var(--blue); background: var(--light); border-radius: 20px; padding: 5px 10px; font-size: 11px; font-weight: 800; }
+ul { list-style: none; margin: 17px 0; }
+li { position: relative; padding: 6px 0 6px 25px; color: #46516a; font-size: 14px; }
+li:before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 900; }
+.card .button { width: 100%; margin-top: 8px; }
+.notice { margin-top: 20px; background: #edf2ff; border-left: 4px solid var(--blue); border-radius: 12px; padding: 17px; color: #34446e; font-size: 14px; }
+.steps { display: grid; gap: 13px; margin-top: 22px; }
+.step { display: flex; gap: 15px; background: white; border: 1px solid var(--border); border-radius: 15px; padding: 18px; }
+.number { min-width: 38px; height: 38px; border-radius: 12px; background: var(--light); color: var(--blue); display: grid; place-items: center; font-weight: 800; }
+.step h3 { font-size: 16px; }
+.step p { font-size: 14px; color: var(--muted); margin: 0; }
+.contact {
+  text-align: center; background: white; border: 1px solid var(--border);
+  border-radius: 22px; padding: clamp(25px,5vw,45px);
+}
+.contact .icon { margin: 0 auto 16px; }
+.phone { font-size: clamp(22px,4vw,30px); font-weight: 800; color: var(--navy); margin: 15px 0 22px; overflow-wrap: anywhere; }
+.navigation {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; margin-top: 28px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.navigation button:disabled { opacity: .35; cursor: not-allowed; transform: none; }
+.page-count { color: var(--muted); font-size: 13px; }
+footer { text-align: center; padding: 28px 15px; background: var(--navy); color: #bdcaff; font-size: 13px; }
+footer strong { color: white; }
+@media(max-width:650px) {
+  .topbar { padding: 13px 15px; }
+  .brand { font-size: 14px; }
+  .top-link { font-size: 11px; padding: 7px 9px; }
+  main { margin: 22px auto; }
+  .grid { grid-template-columns: 1fr; }
+  .hero { border-radius: 21px; }
+  h1 { letter-spacing: -1px; }
+  .card { padding: 21px; }
+  .navigation .button { padding: 11px 13px; }
+}
+</style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-icon">A</div>
-      <div>
-        English with Ayuup
-        <small>Learn with confidence</small>
-      </div>
-    </div>
-
-    <a class="top-contact"
-       href="https://wa.me/251984521332"
-       target="_blank" rel="noopener">
-      Contact Ayuup ↗
-    </a>
-  </header>
-
-  <div class="progress-area">
-    <div class="progress-info">
-      <span id="progressLabel">Welcome</span>
-      <span id="pageNumber">Page 1 of 6</span>
-    </div>
-    <div class="progress-track">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">A</div>
+    <div>English with Ayuup<small>LEARN WITH CONFIDENCE</small></div>
   </div>
+  <a class="top-link" href="https://wa.me/251984521332" target="_blank" rel="noopener">Contact ↗</a>
+</header>
 
-  <main>
-    <!-- PAGE 1: WELCOME -->
-    <section class="page active" aria-label="Welcome">
-      <div class="hero">
-        <span class="eyebrow">Your English journey starts here</span>
-        <h1>Speak English with more confidence.</h1>
-        <p>
-          Welcome to English with Ayuup! Learn step by step with lessons
-          designed to help you improve your English in a supportive way.
-          Choose online WhatsApp lessons or in-person lessons in Jigjiga.
-        </p>
-        <button class="button primary" onclick="movePage(1)">
-          Discover Our Lessons →
-        </button>
-      </div>
+<div class="progress-box">
+  <div class="progress-label">
+    <span id="progressLabel">Welcome</span>
+    <span id="pageNumber">Page 1 of 6</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
 
-      <div class="grid" style="margin-top:22px">
-        <article class="card">
-          <div class="icon">💬</div>
-          <h3>Learn on WhatsApp</h3>
-          <p class="muted">Study online and discuss a lesson schedule directly with Ayuup.</p>
-        </article>
+<main>
+  <!-- PAGE 1 -->
+  <section class="page active">
+    <div class="hero">
+      <span class="eyebrow">YOUR ENGLISH JOURNEY STARTS HERE</span>
+      <h1>Speak English with more confidence.</h1>
+      <p>Welcome to English with Ayuup! Improve your English step by step through online WhatsApp lessons or in-person lessons in Jigjiga.</p>
+      <button class="button primary" onclick="showPage(1)">Explore the Lessons →</button>
+    </div>
+    <div class="grid" style="margin-top:20px">
+      <article class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp Lessons</h3>
+        <p class="muted">Learn online with a lesson schedule agreed directly with Ayuup.</p>
+      </article>
+      <article class="card">
+        <div class="icon">📍</div>
+        <h3>In-Person Lessons</h3>
+        <p class="muted">Monthly English lessons available in Jigjiga, subject to location and schedule confirmation.</p>
+      </article>
+    </div>
+  </section>
 
-        <article class="card">
-          <div class="icon">📍</div>
-          <h3>Learn in Jigjiga</h3>
-          <p class="muted">Monthly in-person lessons available in Jigjiga, subject to an agreed schedule.</p>
-        </article>
-      </div>
-    </section>
+  <!-- PAGE 2 -->
+  <section class="page">
+    <div class="heading">
+      <span class="eyebrow">ABOUT THE LESSONS</span>
+      <h2>Build your English skills.</h2>
+      <p class="muted">Learn in a supportive environment and discuss your goals before starting.</p>
+    </div>
+    <div class="grid">
+      <article class="card"><div class="icon">🗣️</div><h3>Speaking</h3><p class="muted">Practise everyday English conversations and build confidence.</p></article>
+      <article class="card"><div class="icon">📚</div><h3>Vocabulary</h3><p class="muted">Learn useful words and how to use them correctly.</p></article>
+      <article class="card"><div class="icon">✍️</div><h3>Grammar</h3><p class="muted">Understand English sentence structure step by step.</p></article>
+      <article class="card"><div class="icon">🎯</div><h3>Your Goals</h3><p class="muted">Discuss your level and learning goals with Ayuup.</p></article>
+    </div>
+    <div class="notice">Lesson times and expectations will be discussed and agreed before enrollment.</div>
+  </section>
 
-    <!-- PAGE 2: ABOUT -->
-    <section class="page" aria-label="About the lessons">
-      <div class="section-heading">
-        <span class="eyebrow">About the lessons</span>
-        <h2>Learn at your own pace.</h2>
-        <p>Our goal is to make learning English clear, practical and welcoming.</p>
-      </div>
+  <!-- PAGE 3 -->
+  <section class="page">
+    <div class="heading">
+      <span class="eyebrow">ONLINE LEARNING</span>
+      <h2>WhatsApp lesson prices.</h2>
+      <p class="muted">Choose the option that works best for you.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">SINGLE LESSON</span>
+        <div class="icon">💬</div>
+        <h3>One WhatsApp Lesson</h3>
+        <div class="price">100 ETB <small>/ lesson</small></div>
+        <p class="muted">One lesson lasting 30–45 minutes.</p>
+        <ul>
+          <li>One lesson per booking.</li>
+          <li>Lesson time agreed beforehand.</li>
+          <li>Confirm the schedule before payment.</li>
+        </ul>
+        <a class="button secondary" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20a%20single%20WhatsApp%20lesson%20for%20100%20ETB.">Choose Single Lesson</a>
+      </article>
 
-      <div class="grid">
-        <article class="card">
-          <div class="icon">🗣️</div>
-          <h3>Speaking practice</h3>
-          <p class="muted">Build confidence by practising useful English conversations.</p>
-        </article>
+      <article class="card featured">
+        <span class="tag">BEST FOR REGULAR LEARNING</span>
+        <div class="icon">📅</div>
+        <h3>WhatsApp Monthly Plan</h3>
+        <div class="price">1,000 ETB <small>/ month / student</small></div>
+        <p class="muted">12 lessons across four weeks.</p>
+        <ul>
+          <li>1,000 ETB total per student for the monthly plan.</li>
+          <li>Three lessons each week for four weeks.</li>
+          <li>Lesson days and times agreed before enrollment.</li>
+          <li>No extra charges beyond the agreed monthly price.</li>
+          <li>Payment confirmed after the money is received.</li>
+        </ul>
+        <a class="button primary" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%201000%20ETB%20WhatsApp%20monthly%20plan%20for%2012%20lessons.">Choose Monthly Plan</a>
+      </article>
+    </div>
+    <div class="notice"><strong>Before paying:</strong> Message Ayuup to confirm the plan, schedule and payment method. This website does not automatically collect payments.</div>
+  </section>
 
-        <article class="card">
-          <div class="icon">📚</div>
-          <h3>Vocabulary</h3>
-          <p class="muted">Learn new words and understand how to use them in everyday life.</p>
-        </article>
+  <!-- PAGE 4 -->
+  <section class="page">
+    <div class="heading">
+      <span class="eyebrow">JIGJIGA ONLY</span>
+      <h2>In-person lesson prices.</h2>
+      <p class="muted">In-person lessons are monthly plans only. The price depends on the agreed location.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="icon">🏡</div>
+        <h3>Nearby Homes</h3>
+        <div class="price">1,500 ETB <small>/ month / student</small></div>
+        <ul>
+          <li>Monthly plan only.</li>
+          <li>Location and schedule agreed beforehand.</li>
+          <li>No extra charges beyond the agreed price.</li>
+        </ul>
+        <a class="button secondary" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%201500%20ETB%20monthly%20in-person%20plan%20for%20a%20nearby%20home%20in%20Jigjiga.">Ask About Nearby Lessons</a>
+      </article>
+      <article class="card">
+        <div class="icon">📍</div>
+        <h3>Homes a Little Farther Away</h3>
+        <div class="price">2,000 ETB <small>/ month / student</small></div>
+        <ul>
+          <li>Monthly plan only.</li>
+          <li>Location and schedule agreed beforehand.</li>
+          <li>No extra charges beyond the agreed price.</li>
+        </ul>
+        <a class="button primary" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%202000%20ETB%20monthly%20in-person%20plan%20for%20a%20home%20a%20little%20farther%20away%20in%20Jigjiga.">Ask About This Plan</a>
+      </article>
+    </div>
+    <div class="notice">Confirm your exact location, availability, schedule and total price with Ayuup before enrolling. Single in-person lessons are not offered under these plans.</div>
+  </section>
 
-        <article class="card">
-          <div class="icon">✍️</div>
-          <h3>Grammar</h3>
-          <p class="muted">Improve your understanding of English sentence structure.</p>
-        </article>
+  <!-- PAGE 5: PAYMENTS IS ITS OWN PAGE -->
+  <section class="page" id="paymentsPage">
+    <div class="heading">
+      <span class="eyebrow">PAYMENT INFORMATION</span>
+      <h2>Payments made clear.</h2>
+      <p class="muted">Follow these steps before starting your English lessons.</p>
+    </div>
 
-        <article class="card">
-          <div class="icon">🎯</div>
-          <h3>Learning goals</h3>
-          <p class="muted">Discuss your level, goals and suitable lesson schedule before starting.</p>
-        </article>
-      </div>
-
-      <div class="notice">
-        Every student's starting level and learning goals are different.
-        Contact Ayuup to discuss what you want to improve before enrolling.
-      </div>
-    </section>
-
-    <!-- PAGE 3: WHATSAPP PRICES -->
-    <section class="page" aria-label="WhatsApp lesson prices">
-      <div class="section-heading">
-        <span class="eyebrow">Online lessons</span>
-        <h2>WhatsApp lesson prices.</h2>
-        <p>Choose a single lesson or a monthly learning plan.</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <span class="tag">FLEXIBLE OPTION</span>
-          <div class="icon">💬</div>
-          <h3>Single WhatsApp Lesson</h3>
-          <div class="price">100 ETB <small>/ lesson</small></div>
-          <p class="muted">One online lesson lasting 30–45 minutes.</p>
-
-          <ul>
-            <li>One lesson per booking.</li>
-            <li>Lesson time agreed with Ayuup.</li>
-            <li>Great for trying a lesson before choosing a monthly plan.</li>
-            <li>Confirm the lesson schedule before payment.</li>
-          </ul>
-
-          <a class="button secondary"
-             href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20a%20single%20WhatsApp%20lesson%20for%20100%20ETB."
-             target="_blank" rel="noopener">
-            Choose Single Lesson
-          </a>
-        </article>
-
-        <article class="card featured">
-          <span class="tag">MONTHLY PLAN</span>
-          <div class="icon">📅</div>
-          <h3>WhatsApp Monthly Plan</h3>
-          <div class="price">1,000 ETB <small>/ month / student</small></div>
-          <p class="muted">12 lessons per month — three lessons per week for four weeks.</p>
-
-          <ul>
-            <li>1,000 ETB per student for the monthly plan.</li>
-            <li>12 lessons in the agreed four-week plan.</li>
-            <li>Three lessons per week.</li>
-            <li>Lesson days and times agreed before enrollment.</li>
-            <li>No extra charges beyond the agreed monthly price.</li>
-            <li>Payment is confirmed after the money is received.</li>
-          </ul>
-
-          <a class="button primary"
-             href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%201000%20ETB%20WhatsApp%20monthly%20plan%20for%2012%20lessons."
-             target="_blank" rel="noopener">
-            Choose Monthly Plan
-          </a>
-        </article>
-      </div>
-
-      <div class="notice">
-        <strong>Payment and scheduling:</strong> Contact Ayuup on WhatsApp
-        to agree on your plan, lesson times and payment method before starting.
-        The website does not automatically collect payments.
-      </div>
-    </section>
-
-    <!-- PAGE 4: IN-PERSON -->
-    <section class="page" aria-label="In-person lesson prices">
-      <div class="section-heading">
-        <span class="eyebrow">Jigjiga only</span>
-        <h2>Learn English in person.</h2>
-        <p>In-person lessons are offered as monthly plans only. The monthly price depends on the agreed location.</p>
-      </div>
-
-      <div class="grid">
-        <article class="card">
-          <div class="icon">🏡</div>
-          <h3>Nearby Homes</h3>
-          <div class="price">1,500 ETB <small>/ month / student</small></div>
-          <p class="muted">For agreed lesson locations near Ayuup.</p>
-
-          <ul>
-            <li>Monthly plan only.</li>
-            <li>Lesson schedule agreed in advance.</li>
-            <li>Location confirmed before enrollment.</li>
-            <li>No extra charges beyond the agreed price.</li>
-          </ul>
-
-          <a class="button secondary"
-             href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%201500%20ETB%20monthly%20in-person%20plan%20for%20a%20nearby%20home%20in%20Jigjiga."
-             target="_blank" rel="noopener">
-            Ask About Nearby Lessons
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="icon">📍</div>
-          <h3>Homes a Little Farther Away</h3>
-          <div class="price">2,000 ETB <small>/ month / student</small></div>
-          <p class="muted">For agreed lesson locations a little farther away in Jigjiga.</p>
-
-          <ul>
-            <li>Monthly plan only.</li>
-            <li>Location and schedule agreed in advance.</li>
-            <li>Price confirmed before enrollment.</li>
-            <li>No extra charges beyond the agreed price.</li>
-          </ul>
-
-          <a class="button primary"
-             href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%27m%20interested%20in%20the%202000%20ETB%20monthly%20in-person%20plan%20for%20a%20home%20a%20little%20farther%20away%20in%20Jigjiga."
-             target="_blank" rel="noopener">
-            Ask About This Plan
-          </a>
-        </article>
-      </div>
-
-      <div class="notice">
-        In-person availability, the exact location, lesson schedule and what
-        is included must be confirmed with Ayuup before payment. In-person
-        single lessons are not offered through these plans.
-      </div>
-    </section>
-
-    <!-- PAGE 5: PAYMENT PROCESS -->
-    <section class="page" aria-label="Payment process">
-      <div class="section-heading">
-        <span class="eyebrow">Simple and transparent</span>
-        <h2>How payment works.</h2>
-        <p>Contact Ayuup first so your price and schedule are clear before you begin.</p>
-      </div>
-
+    <div class="contact" style="text-align:left">
+      <div class="icon">💳</div>
+      <h3>How to pay for your lessons</h3>
       <div class="steps">
         <div class="step">
-          <div class="step-number">01</div>
-          <div>
-            <h3>Choose your lesson plan</h3>
-            <p>Select a WhatsApp lesson or an available in-person monthly plan.</p>
-          </div>
+          <div class="number">01</div>
+          <div><h3>Choose your plan</h3><p>Decide whether you want a single WhatsApp lesson, a WhatsApp monthly plan or an available in-person monthly plan.</p></div>
         </div>
-
         <div class="step">
-          <div class="step-number">02</div>
-          <div>
-            <h3>Contact Ayuup</h3>
-            <p>Discuss your goals, location if applicable, lesson times and the total agreed price.</p>
-          </div>
+          <div class="number">02</div>
+          <div><h3>Message Ayuup</h3><p>Confirm the total price, lesson schedule and what is included before making payment.</p></div>
         </div>
-
         <div class="step">
-          <div class="step-number">03</div>
-          <div>
-            <h3>Agree on payment</h3>
-            <p>Ayuup will confirm the available payment method and instructions directly with you.</p>
-          </div>
+          <div class="number">03</div>
+          <div><h3>Confirm the payment method</h3><p>Ayuup will tell you which payment method is available and provide the relevant instructions directly.</p></div>
         </div>
-
         <div class="step">
-          <div class="step-number">04</div>
-          <div>
-            <h3>Confirm payment and start</h3>
-            <p>Payment is confirmed after the money is received. Then follow your agreed lesson schedule.</p>
-          </div>
+          <div class="number">04</div>
+          <div><h3>Payment confirmation</h3><p>Your payment is confirmed after the money has been received and verified. Then follow your agreed lesson schedule.</p></div>
         </div>
       </div>
+    </div>
 
-      <div class="notice">
-        <strong>Important:</strong> This website does not process payments
-        automatically. Do not send money until you have confirmed the plan,
-        total price, schedule and payment details directly with Ayuup.
-        No additional charges apply beyond the price agreed before enrollment.
-      </div>
-    </section>
+    <div class="grid" style="margin-top:20px">
+      <article class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp Monthly Payment</h3>
+        <div class="price">1,000 ETB <small>/ month / student</small></div>
+        <p class="muted">Includes 12 lessons: three lessons each week for four weeks.</p>
+        <ul>
+          <li>Confirm your lesson days first.</li>
+          <li>Agree on the payment method with Ayuup.</li>
+          <li>No extra charges beyond the agreed monthly price.</li>
+        </ul>
+        <a class="button whatsapp" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%20want%20to%20confirm%20the%20WhatsApp%20monthly%20payment%20of%201000%20ETB.">Confirm Monthly Payment</a>
+      </article>
+      <article class="card">
+        <div class="icon">🔒</div>
+        <h3>Important Payment Rules</h3>
+        <ul>
+          <li>Confirm the price before sending money.</li>
+          <li>Never rely on unconfirmed payment details.</li>
+          <li>This website does not collect money automatically.</li>
+          <li>Keep your payment receipt until it is confirmed.</li>
+          <li>Any schedule changes must be discussed with Ayuup.</li>
+        </ul>
+      </article>
+    </div>
 
-    <!-- PAGE 6: CONTACT -->
-    <section class="page" aria-label="Contact Ayuup">
-      <div class="contact-panel">
-        <div class="icon">🤝</div>
-        <span class="tag">LET'S GET STARTED</span>
-        <h2>Ready to learn English?</h2>
-        <p class="muted">
-          Have a question about lessons, monthly payment or scheduling?
-          Message Ayuup directly on WhatsApp.
-        </p>
+    <div class="notice"><strong>Transparency:</strong> The agreed price is the price you pay. Confirm the plan and any arrangements directly with Ayuup before payment.</div>
+  </section>
 
-        <div class="phone">+251 984 521 332</div>
+  <!-- PAGE 6 -->
+  <section class="page">
+    <div class="contact">
+      <div class="icon">🤝</div>
+      <span class="eyebrow">LET'S GET STARTED</span>
+      <h2>Ready to learn English?</h2>
+      <p class="muted">Ask about prices, lesson times, monthly payments or available places.</p>
+      <div class="phone">+251 984 521 332</div>
+      <a class="button whatsapp" target="_blank" rel="noopener" href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%20visited%20your%20English%20website%20and%20would%20like%20to%20ask%20about%20lessons.">Message Ayuup on WhatsApp ↗</a>
+      <p class="muted" style="margin-top:18px;font-size:13px">English with Ayuup · Learn with confidence.</p>
+    </div>
+  </section>
 
-        <a class="button whatsapp"
-           href="https://wa.me/251984521332?text=Hello%20Ayuup!%20I%20visited%20your%20English%20learning%20website%20and%20would%20like%20to%20know%20more%20about%20your%20lessons."
-           target="_blank" rel="noopener">
-          Message Ayuup on WhatsApp ↗
-        </a>
+  <!-- BACK AND NEXT NAVIGATION -->
+  <nav class="navigation" aria-label="Page navigation">
+    <button class="button secondary" id="backButton" type="button" onclick="movePage(-1)">← Back</button>
+    <span class="page-count" id="pageCount">1 / 6</span>
+    <button class="button primary" id="nextButton" type="button" onclick="movePage(1)">Next →</button>
+  </nav>
+</main>
 
-        <p class="muted" style="margin-top:18px;font-size:13px">
-          Tell Ayuup which lesson plan interests you and what you want to learn.
-        </p>
-      </div>
-    </section>
+<footer>
+  <p><strong>English with Ayuup</strong></p>
+  <p>Learn with confidence. Improve one lesson at a time.</p>
+  <p>WhatsApp: +251 984 521 332</p>
+  <p style="margin-top:8px">© <span id="year"></span> English with Ayuup</p>
+</footer>
 
-    <!-- NAVIGATION -->
-    <nav class="navigation" aria-label="Page navigation">
-      <button class="button secondary" id="backButton"
-              onclick="movePage(-1)" disabled>
-        ← Back
-      </button>
+<script>
+(function () {
+  const pages = Array.from(document.querySelectorAll("main > section.page"));
+  const names = [
+    "Welcome",
+    "About the Lessons",
+    "WhatsApp Prices",
+    "In-Person Lessons",
+    "Payments",
+    "Contact Ayuup"
+  ];
 
-      <span class="page-count" id="navCount">1 / 6</span>
+  let currentPage = 0;
 
-      <button class="button primary" id="nextButton"
-              onclick="movePage(1)">
-        Next →
-      </button>
-    </nav>
-  </main>
+  function showPage(index) {
+    if (index < 0 || index >= pages.length) return;
 
-  <footer>
-    <p><strong>English with Ayuup</strong></p>
-    <p>Learn with confidence. Improve one lesson at a time.</p>
-    <p style="margin-top:8px">Contact: +251 984 521 332</p>
-    <p style="margin-top:8px">© <span id="year"></span> English with Ayuup</p>
-  </footer>
+    currentPage = index;
 
-  <script>
-    const pages = Array.from(document.querySelectorAll(".page"));
+    pages.forEach(function (page, i) {
+      page.classList.remove("active");
+      if (i === currentPage) page.classList.add("active");
+    });
 
-    const pageNames = [
-      "Welcome",
-      "About the Lessons",
-      "WhatsApp Prices",
-      "In-Person Lessons",
-      "Payment Process",
-      "Contact Ayuup"
-    ];
+    document.getElementById("progressLabel").textContent = names[currentPage];
+    document.getElementById("pageNumber").textContent =
+      "Page " + (currentPage + 1) + " of " + pages.length;
+    document.getElementById("pageCount").textContent =
+      (currentPage + 1) + " / " + pages.length;
+    document.getElementById("progressFill").style.width =
+      ((currentPage + 1) / pages.length * 100) + "%";
 
-    let currentPage = 0;
+    document.getElementById("backButton").disabled = currentPage === 0;
 
-    function showPage(index) {
-      if (index < 0 || index >= pages.length) return;
+    document.getElementById("nextButton").textContent =
+      currentPage === pages.length - 1 ? "Start Again ↻" : "Next →";
 
-      currentPage = index;
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
 
-      pages.forEach((page, i) => {
-        page.classList.toggle("active", i === currentPage);
-      });
+  window.showPage = showPage;
 
-      document.getElementById("progressLabel").textContent =
-        pageNames[currentPage];
-
-      document.getElementById("pageNumber").textContent =
-        `Page ${currentPage + 1} of ${pages.length}`;
-
-      document.getElementById("navCount").textContent =
-        `${currentPage + 1} / ${pages.length}`;
-
-      document.getElementById("progressFill").style.width =
-        `${((currentPage + 1) / pages.length) * 100}%`;
-
-      document.getElementById("backButton").disabled =
-        currentPage === 0;
-
-      const nextButton = document.getElementById("nextButton");
-
-      if (currentPage === pages.length - 1) {
-        nextButton.textContent = "Start Again ↻";
-      } else {
-        nextButton.textContent = "Next →";
-      }
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function movePage(direction) {
-      if (currentPage === pages.length - 1 && direction === 1) {
-        showPage(0);
-        return;
-      }
-
+  window.movePage = function (direction) {
+    if (currentPage === pages.length - 1 && direction === 1) {
+      showPage(0);
+    } else {
       showPage(currentPage + direction);
     }
+  };
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-
-    showPage(0);
-  </script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  showPage(0);
+})();
+</script>
 </body>
 </html>
